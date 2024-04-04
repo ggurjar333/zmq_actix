@@ -20,6 +20,9 @@ jobs:
       - name: Install libzmq
         run: sudo apt-get update && sudo apt-get install -y libzmq3-dev
 
+      - name: Set PKG_CONFIG_PATH
+        run: echo "::set-env name=PKG_CONFIG_PATH::/usr/lib/pkgconfig"
+
       - name: Set up Rust
         uses: actions/setup-rust@v1
         with:
