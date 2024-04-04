@@ -17,6 +17,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Install libzmq
+        run: sudo apt-get update && sudo apt-get install -y libzmq3-dev
+
       - name: Set up Rust
         uses: actions/setup-rust@v1
         with:
@@ -27,6 +30,3 @@ jobs:
 
       - name: Test
         run: cargo test --verbose
-      
-      - name: Run
-        run: cargo run --verbose
