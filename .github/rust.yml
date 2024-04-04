@@ -20,13 +20,13 @@ jobs:
       - name: Install libzmq
         run: sudo apt-get update && sudo apt-get install -y libzmq3-dev
 
-      - name: Set PKG_CONFIG_PATH
-        run: echo "::set-env name=PKG_CONFIG_PATH::/usr/lib/pkgconfig"
-
       - name: Set up Rust
         uses: actions/setup-rust@v1
         with:
           rust-version: stable
+
+      - name: Set LIBZMQ_PATH environment variable
+        run: echo "export LIBZMQ_PATH=/usr/lib/x86_64-linux-gnu" >> $GITHUB_ENV
 
       - name: Build
         run: cargo build --verbose
